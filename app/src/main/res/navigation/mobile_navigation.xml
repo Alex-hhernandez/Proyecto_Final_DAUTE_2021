@@ -22,4 +22,9 @@
         android:name="com.acdi.proyecto_final_daute.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_Listar"
+        android:name="com.acdi.proyecto_final_daute.nav_Listar"
+        android:label="fragment_nav__listar"
+        tools:layout="@layout/fragment_nav__listar" />
 </navigation>
