@@ -12,4 +12,16 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="estadoUser">
+        <item>Selecione el estado</item>
+        <item>Activo</item>
+        <item>Inactivo</item>
+    </string-array>
+
+    <string-array name="tipoUser">
+        <item>Selecione el tipo</item>
+        <item>Administrador</item>
+        <item>Invitado</item>
+    </string-array>
 </resources>

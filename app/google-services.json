@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "204172252160",
+    "firebase_url": "https://proyecto-final-daute-default-rtdb.firebaseio.com",
+    "project_id": "proyecto-final-daute",
+    "storage_bucket": "proyecto-final-daute.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204172252160:android:ebfc29f703edcd7f8734e5",
+        "android_client_info": {
+          "package_name": "com.acdi.proyecto_final_daute"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204172252160-omqbptcf5rjbm8lg9b3d55ma61cl5ulj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCawLulaEhnV_tHMC9tLmliNkAf4P5nP64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204172252160-omqbptcf5rjbm8lg9b3d55ma61cl5ulj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
