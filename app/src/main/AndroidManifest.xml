@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.acdi.proyecto_final_daute">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,31 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Final_DAUTE">
-
         <activity
-            android:theme="@style/Theme.DAUTE_NoActionBar"
+            android:name=".List_User"
+            android:exported="false" />
+        <activity
             android:name=".Login"
-            android:exported="true" />
-
+            android:exported="true"
+            android:theme="@style/Theme.DAUTE_NoActionBar" />
         <activity
-            android:theme="@style/Theme.DAUTE_NoActionBar"
             android:name=".SplashScreen"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/Theme.DAUTE_NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Proyecto_Final_DAUTE.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.Proyecto_Final_DAUTE.NoActionBar"></activity>
     </application>
 
 </manifest>

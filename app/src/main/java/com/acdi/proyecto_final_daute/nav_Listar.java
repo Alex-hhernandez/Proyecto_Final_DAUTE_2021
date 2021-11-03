@@ -1,5 +1,7 @@
 package com.acdi.proyecto_final_daute;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -26,7 +28,7 @@ public class nav_Listar extends Fragment {
     private EditText et_id, et_nombre, et_apellido, et_correo, et_usuario, et_clave, et_pregunta, et_respuesta;
     private Spinner sp_estado, sp_tipo;
     private TextView tv_fecha;
-    private Button btnNuevo, btnGuardar;
+    private Button btnNuevo, btnGuardar,btnVer;
 
     DatabaseReference databaseReference;
 
@@ -48,6 +50,8 @@ public class nav_Listar extends Fragment {
         tv_fecha = view.findViewById(R.id.textView10);
         btnGuardar = view.findViewById(R.id.button);
         btnNuevo = view.findViewById(R.id.button2);
+        btnVer = view.findViewById(R.id.btn_Ver);
+
 
         ArrayAdapter<CharSequence> adapterEstado = ArrayAdapter.createFromResource(getContext(), R.array.estadoUser, android.R.layout.simple_spinner_item);
         adapterEstado.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -58,6 +62,8 @@ public class nav_Listar extends Fragment {
         sp_tipo.setAdapter(adaptertipo);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
+
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +126,14 @@ public class nav_Listar extends Fragment {
                     saveUser(id, nombre, apellidos, correo, usuario, clave, tipo, estado, pregunta, respuesta);
                     Toast.makeText(getContext(), "¡Registro guardado!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnVer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), List_User.class);
+                startActivity(i);
             }
         });
 

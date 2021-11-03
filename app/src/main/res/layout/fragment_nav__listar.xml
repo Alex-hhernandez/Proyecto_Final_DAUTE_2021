@@ -298,7 +298,7 @@
                 android:textStyle="bold" />
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/textView10"
                 android:layout_marginTop="30dp"
                 android:gravity="center">
@@ -313,8 +313,16 @@
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
+                    android:layout_below="@id/button"
+                    android:layout_marginTop="20dp"
                     android:text="Nuevo Usuario" />
+                <Button
+                    android:id="@+id/btn_Ver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/button2"
+                    android:layout_marginTop="20dp"
+                    android:text="Ver Usuarios" />
 
             </RelativeLayout>
 
