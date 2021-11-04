@@ -29,23 +29,22 @@
         android:src="@drawable/accountt" />
 
     <EditText
-        android:paddingHorizontal="12sp"
-        android:paddingVertical="12sp"
         android:id="@+id/et_email"
-        android:drawableLeft="@drawable/custom_email"
-        android:drawablePadding="15sp"
-        android:layout_marginTop="20sp"
-        android:layout_below="@id/image_user"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/image_user"
         android:layout_centerHorizontal="true"
-        android:hint="Email"
-        android:textColorHint="#B1A8A8"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:layout_marginTop="20sp"
         android:background="@drawable/custom_input"
-        />
+        android:drawableLeft="@drawable/custom_email"
+        android:drawablePadding="15sp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="12sp"
+        android:paddingVertical="12sp"
+        android:textColor="@color/white"
+        android:textColorHint="#B1A8A8"
+        android:textStyle="bold" />
 
     <EditText
         android:drawableLeft="@drawable/custom_lock"
