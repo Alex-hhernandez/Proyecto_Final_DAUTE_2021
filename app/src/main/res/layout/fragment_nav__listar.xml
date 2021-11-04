@@ -53,22 +53,21 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:paddingHorizontal="12sp"
-                android:paddingVertical="12sp"
                 android:id="@+id/id_user"
-                android:drawablePadding="15sp"
-                android:layout_marginTop="20sp"
-                android:layout_below="@id/textView1"
                 android:layout_width="300sp"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/textView1"
                 android:layout_centerHorizontal="true"
-                android:hint="Ingrese el id"
-                android:textColorHint="#B1A8A8"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textStyle="bold"
+                android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
-                />
+                android:drawablePadding="15sp"
+                android:hint="Ingrese el id"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="12sp"
+                android:paddingVertical="12sp"
+                android:textColor="@color/white"
+                android:textColorHint="#B1A8A8"
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
@@ -82,22 +81,21 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:paddingHorizontal="12sp"
-                android:paddingVertical="12sp"
                 android:id="@+id/et_des"
-                android:drawablePadding="15sp"
-                android:layout_marginTop="20sp"
-                android:layout_below="@id/textView2"
                 android:layout_width="300sp"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/textView2"
                 android:layout_centerHorizontal="true"
-                android:hint="Ingrese el nombre"
-                android:textColorHint="#B1A8A8"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textStyle="bold"
+                android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
-                />
+                android:drawablePadding="15sp"
+                android:hint="Ingrese el nombre"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="12sp"
+                android:paddingVertical="12sp"
+                android:textColor="@color/white"
+                android:textColorHint="#B1A8A8"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -178,7 +176,7 @@
                 android:background="@drawable/custom_user"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese el usuario"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:paddingHorizontal="12sp"
                 android:paddingVertical="12sp"
                 android:textColor="@color/white"
@@ -206,7 +204,7 @@
                 android:background="@drawable/custom_user"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese la clave"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:paddingHorizontal="12sp"
                 android:paddingVertical="12sp"
                 android:textColor="@color/white"
