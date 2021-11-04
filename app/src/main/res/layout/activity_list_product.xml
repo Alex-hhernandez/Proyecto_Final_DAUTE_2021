@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".List_User">
+    tools:context=".list_product">
 
     <ImageView
-        android:onClick="back_aggUser"
+        android:onClick="back_aggProduct"
         android:id="@+id/btn_back"
         android:layout_marginLeft="15sp"
         android:layout_marginTop="10sp"
@@ -24,18 +24,19 @@
         android:layout_below="@id/btn_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10sp"
-        android:text="LISTADO DE USUARIOS"
+        android:text="LISTADO DE PRODUCTOS"
         android:textColor="#38FF00"
         android:textSize="20dp"
         android:textStyle="bold" />
 
-            <ListView
-                android:layout_centerHorizontal="true"
-                android:id="@+id/ListaUser"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@id/tv"
-                android:layout_marginTop="30dp"
-                android:background="@color/white"
-                />
+    <ListView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ListaProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        />
+
 </RelativeLayout>
