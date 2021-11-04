@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -30,11 +32,14 @@ public class List_User extends AppCompatActivity {
     DatabaseReference databaseReference;
     DatabaseReference databaseReference1;
     DtoUser datos = new DtoUser();
+    private Window window;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_user);
+        this.window = getWindow();
+        cambiarcolor();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference1 = FirebaseDatabase.getInstance().getReference(getString(R.string.Usuario));
@@ -69,5 +74,17 @@ public class List_User extends AppCompatActivity {
                 Toast.makeText(List_User.this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void back_aggUser(View view) {
+        Toast.makeText(this, "Back", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    private void cambiarcolor(){
+        String color = "#FF000000";
+
+        window.setStatusBarColor(Color.parseColor(color));
+
     }
 }

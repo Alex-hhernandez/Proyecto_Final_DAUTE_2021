@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Final_DAUTE">
         <activity
+            android:theme="@style/Theme.DAUTE_NoActionBar"
             android:name=".List_User"
             android:exported="false" />
         <activity

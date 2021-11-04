@@ -4,26 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_shadow_start_color"
+    android:background="@color/black"
     tools:context=".List_User">
 
+    <ImageView
+        android:onClick="back_aggUser"
+        android:id="@+id/btn_back"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="10sp"
+        android:layout_alignParentLeft="true"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/back"/>
+
             <TextView
+                android:layout_below="@id/btn_back"
                 android:id="@+id/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="10sp"
                 android:text="LISTADO DE USUARIOS"
-                android:textColor="@color/black"
+                android:textColor="#38FF00"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
             <ListView
+                android:layout_centerHorizontal="true"
                 android:id="@+id/ListaUser"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_below="@id/tv"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/custom_user"
+                android:background="@color/white"
                 />
 </RelativeLayout>
