@@ -45,6 +45,13 @@ public class List_User extends AppCompatActivity {
         databaseReference1 = FirebaseDatabase.getInstance().getReference(getString(R.string.Usuario));
 
         listaUsers = findViewById(R.id.ListaUser);
+        listaUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent edit = new Intent(getApplicationContext(), Edit_User.class);
+                startActivity(edit);
+            }
+        });
 
         listarDatos();
     }
