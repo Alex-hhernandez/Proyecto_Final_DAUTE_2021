@@ -12,8 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Final_DAUTE">
         <activity
+            android:name=".list_category"
+            android:exported="false"
+            android:theme="@style/Theme.DAUTE_NoActionBar"/>
+        <activity
             android:name=".list_product"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.DAUTE_NoActionBar"/>
         <activity
             android:name=".List_User"
             android:exported="false"
