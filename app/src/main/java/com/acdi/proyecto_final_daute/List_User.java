@@ -45,13 +45,7 @@ public class List_User extends AppCompatActivity {
         databaseReference1 = FirebaseDatabase.getInstance().getReference(getString(R.string.Usuario));
 
         listaUsers = findViewById(R.id.ListaUser);
-        listaUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent edit = new Intent(getApplicationContext(), Edit_User.class);
-                startActivity(edit);
-            }
-        });
+
 
         listarDatos();
     }
@@ -72,7 +66,73 @@ public class List_User extends AppCompatActivity {
                     adaptador = new ArrayAdapter<DtoUser>(List_User.this, android.R.layout.simple_list_item_1, lista);
                     listaUsers.setAdapter(adaptador);
 
+                    listaUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
+                            Query query = databaseReference1.orderByChild("nombre").equalTo(listaUsers.getItemAtPosition(position).toString());
+
+                            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+
+                                        DtoUser user = snapshot.getValue(DtoUser.class);
+                                        String id = user.getId();
+                                        String nombre = user.getNombre();
+                                        String apellidos = user.getApellidos();
+                                        String correo = user.getCorreo();
+                                        String usuario = user.getUsuario();
+                                        String clave = user.getClave();
+                                        String tipo = user.getTipo();
+                                        String estado = user.getEstado();
+                                        String pregunta = user.getPregunta();
+                                        String respuesta = user.getRespuesta();
+
+                                        //Toast.makeText(getApplicationContext(), ""+ nombre, Toast.LENGTH_SHORT).show();
+                                        //Bundle bundle = new Bundle();
+                                        Intent intent = new Intent(getApplicationContext(), Edit_User.class);
+
+                                        intent.putExtra("senal", "1");
+                                        intent.putExtra("id", id);
+                                        intent.putExtra("nombre", nombre);
+                                        intent.putExtra("apellidos", apellidos);
+                                        intent.putExtra("correo", correo);
+                                        intent.putExtra("usuario", usuario);
+                                        intent.putExtra("clave", clave);
+                                        intent.putExtra("tipo", tipo);
+                                        intent.putExtra("estado", estado);
+                                        intent.putExtra("pregunta", pregunta);
+                                        intent.putExtra("respuesta", respuesta);
+
+                                        intent.putExtras(intent);
+
+                                        startActivity(intent);
+
+                                        Log.i("id", ""+id);
+                                        Log.e("nombre", ""+nombre);
+                                        Log.e("apellidos", ""+apellidos);
+                                        Log.e("correo", ""+correo);
+                                        Log.e("usuario", ""+usuario);
+                                        Log.e("clave", ""+clave);
+                                        Log.e("tipo", ""+tipo);
+                                        Log.e("estado", ""+estado);
+                                        Log.e("pregunta", ""+pregunta);
+                                        Log.e("respuesta", ""+respuesta);
+                                        Log.i("Datos: ", ""+snapshot.getValue());
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        }
+                    });
                 }
             }
 
