@@ -181,6 +181,15 @@ public class Edit_User extends AppCompatActivity {
             }
         });
 
+        btnBorrar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                String id = et_id.getText().toString();
+
+                deleteUser(id);
+            }
+        });
     }
 
     private void updateUser(String id, String nombre, String apellidos, String correo,
@@ -217,6 +226,31 @@ public class Edit_User extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
             }
 
+        });
+    }
+
+    private void deleteUser(String id){
+
+        Query query = databaseReference1.orderByChild("id").equalTo(id);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+                    String llave = dataSnapshot.getKey();
+
+                    databaseReference1.child(llave).removeValue();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+
+            }
         });
     }
 
