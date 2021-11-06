@@ -242,6 +242,7 @@ public class Edit_User extends AppCompatActivity {
                     String llave = dataSnapshot.getKey();
 
                     databaseReference1.child(llave).removeValue();
+                    Toast.makeText(getApplicationContext(), "Eliminado.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }

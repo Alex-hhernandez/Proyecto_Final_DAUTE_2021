@@ -152,7 +152,6 @@ public class nav_Listar extends Fragment {
         datosUser.put("estado", estado);
         datosUser.put("pregunta", pregunta);
         datosUser.put("respuesta", respuesta);
-        datosUser.put("fecha", ServerValue.TIMESTAMP);
 
         databaseReference.child("Usuario").push().setValue(datosUser);
     }
