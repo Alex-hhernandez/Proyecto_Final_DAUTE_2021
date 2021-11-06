@@ -79,7 +79,10 @@
                 android:paddingVertical="12sp"
                 android:textColor="@color/white"
                 android:textColorHint="#B1A8A8"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="false"
+                android:textIsSelectable="false"/>
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"

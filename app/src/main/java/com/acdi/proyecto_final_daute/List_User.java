@@ -56,7 +56,7 @@ public class List_User extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                //lista.clear();
+                lista.clear();
 
                 for(DataSnapshot snapshot1 : snapshot.getChildren()){
 
@@ -109,8 +109,9 @@ public class List_User extends AppCompatActivity {
                                         intent.putExtras(intent);
 
                                         startActivity(intent);
+                                        //finish();
 
-                                        Log.i("id", ""+id);
+                                        /*Log.i("id", ""+id);
                                         Log.e("nombre", ""+nombre);
                                         Log.e("apellidos", ""+apellidos);
                                         Log.e("correo", ""+correo);
@@ -120,7 +121,7 @@ public class List_User extends AppCompatActivity {
                                         Log.e("estado", ""+estado);
                                         Log.e("pregunta", ""+pregunta);
                                         Log.e("respuesta", ""+respuesta);
-                                        Log.i("Datos: ", ""+snapshot.getValue());
+                                        Log.i("Datos: ", ""+snapshot.getValue());*/
                                     }
 
                                 }
