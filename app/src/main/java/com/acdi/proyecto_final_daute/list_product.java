@@ -6,10 +6,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class list_product extends AppCompatActivity {
 
+    private ListView ListaProduct;
     private Window window;
 
     @Override
@@ -20,6 +22,8 @@ public class list_product extends AppCompatActivity {
         this.window = getWindow();
 
         cambiarcolor();
+
+        ListaProduct = findViewById(R.id.ListaProduct);
     }
     public void back_aggProduct(View view) {
         Toast.makeText(this, "Back", Toast.LENGTH_SHORT).show();
