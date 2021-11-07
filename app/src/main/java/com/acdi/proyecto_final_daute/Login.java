@@ -1,13 +1,16 @@
 package com.acdi.proyecto_final_daute;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -36,8 +39,7 @@ public class Login extends AppCompatActivity {
         btnsuccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent home = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(home);
+                welcome();
             }
         });
     }
@@ -61,5 +63,29 @@ public class Login extends AppCompatActivity {
 
         window.setStatusBarColor(Color.parseColor(color));
 
+    }
+
+    private void welcome() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View vie = inflater.inflate(R.layout.dialog_welcome, null);
+
+        builder.setView(vie);
+
+        final AlertDialog dialog = builder.create();
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent home = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(home);
+                dialog.dismiss();
+            }
+        },1500);
+
+        dialog.show();
     }
 }
