@@ -45,7 +45,7 @@ public class list_category extends AppCompatActivity {
         ArrayList<String> lista = new ArrayList<>();
         ArrayList<dto_categorias> listaCategorias = new ArrayList<>();
 
-        String url = "acdi.freeoda.com/web_service/buscar_categorias.php";
+        String url = "http://acdi.freeoda.com/web_service/buscar_categorias.php";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
