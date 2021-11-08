@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class Edit_Category extends AppCompatActivity {
 
     private EditText et_id, et_nombre;
     private Spinner sp_estado;
+    private Button btnDelete, btnUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,18 @@ public class Edit_Category extends AppCompatActivity {
         et_id = findViewById(R.id.idcat_edit);
         et_nombre = findViewById(R.id.namecat_edit);
         sp_estado = findViewById(R.id.spinner_cat);
+        btnDelete = findViewById(R.id.btn_delete);
+        btnUpdate = findViewById(R.id.btn_save);
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String id = et_id.getText().toString();
+
+                deleteCategory(getApplicationContext(), id);
+            }
+        });
 
         ArrayAdapter<CharSequence> adapterEstado = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoUser, android.R.layout.simple_spinner_item);
         adapterEstado.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -92,6 +106,54 @@ public class Edit_Category extends AppCompatActivity {
             protected HashMap<String,String> getParams(){
                 HashMap<String,String> parametros = new HashMap<>();
                 parametros.put("nombre", nombre);
+
+                return parametros;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+
+    private void deleteCategory(final Context context, final String id){
+
+        String url = "http://acdi.freeoda.com/web_service/eliminar_categoria.php";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                JSONObject requestJSON = null;
+
+                try {
+
+                    requestJSON = new JSONObject(response.toString());
+                    String estado = requestJSON.getString("estado");
+                    String mensaje = requestJSON.getString("mensaje");
+
+                    if(estado.equals("1")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }else if (estado.equals("2")){
+                        Toast.makeText(context, "" + mensaje, Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    e.getMessage();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected HashMap<String,String> getParams(){
+
+                HashMap<String,String> parametros = new HashMap<>();
+                parametros.put("id", id);
 
                 return parametros;
             }
