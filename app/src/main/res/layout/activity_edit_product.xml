@@ -65,13 +65,16 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:clickable="true"
                 android:drawablePadding="15sp"
+                android:focusable="false"
                 android:hint="Ingrese el id"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="12sp"
                 android:paddingVertical="12sp"
                 android:textColor="@color/white"
                 android:textColorHint="#B1A8A8"
+                android:textIsSelectable="false"
                 android:textStyle="bold" />
 
             <TextView

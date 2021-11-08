@@ -2,11 +2,13 @@ package com.acdi.proyecto_final_daute;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -52,7 +54,6 @@ public class list_product extends AppCompatActivity {
 
                 try{
                     JSONArray array = new JSONArray(response);
-                    int totalencontrados = array.length();
                     dto_productos obj_productos = null;
 
                     for(int i = 0; i < array.length(); i++){
@@ -74,6 +75,16 @@ public class list_product extends AppCompatActivity {
 
                         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, lista);
                         ListaProduct.setAdapter(adapter);
+                        ListaProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                Intent intent = new Intent(getApplicationContext(), Edit_Product.class);
+                                String nombres = (String) ListaProduct.getItemAtPosition(i);
+                                intent.putExtra("nombre", nombres);
+                                startActivity(intent);
+                            }
+                        });
 
                         Log.i("id_producto", String.valueOf(obj_productos.getId_producto()));
                         Log.i("nombre_producto", String.valueOf(obj_productos.getId_producto()));
