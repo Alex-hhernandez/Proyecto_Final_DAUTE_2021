@@ -55,12 +55,12 @@
         android:layout_marginTop="20sp"/>
 
     <EditText
-        android:layout_marginTop="8sp"
         android:id="@+id/idcat_edit"
-        android:layout_below="@id/textview_idCat"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textview_idCat"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="8sp"
         android:background="@drawable/custom_input"
         android:drawableLeft="@drawable/key"
         android:drawablePadding="15sp"
@@ -71,7 +71,9 @@
         android:textColor="@color/white"
         android:textColorHint="#B1A8A8"
         android:textStyle="bold"
-        />
+        android:focusable="false"
+        android:clickable="true"
+        android:textIsSelectable="false"/>
 
     <TextView
         android:id="@+id/textview_nameCat"
@@ -86,12 +88,12 @@
         android:layout_marginTop="20sp"/>
 
     <EditText
-        android:layout_marginTop="8sp"
         android:id="@+id/namecat_edit"
-        android:layout_below="@id/textview_nameCat"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textview_nameCat"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="8sp"
         android:background="@drawable/custom_input"
         android:drawableLeft="@drawable/create"
         android:drawablePadding="15sp"
@@ -101,8 +103,7 @@
         android:paddingVertical="12sp"
         android:textColor="@color/white"
         android:textColorHint="#B1A8A8"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_centerHorizontal="true"

@@ -2,11 +2,13 @@ package com.acdi.proyecto_final_daute;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -52,7 +54,6 @@ public class list_category extends AppCompatActivity {
 
                 try{
                     JSONArray array = new JSONArray(response);
-                    int totalencontrados = array.length();
                     dto_categorias obj_categorias = null;
 
                     for(int i = 0; i < array.length(); i++){
@@ -69,6 +70,16 @@ public class list_category extends AppCompatActivity {
 
                         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, lista);
                         listaCat.setAdapter(adapter);
+                        listaCat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                Intent intent = new Intent(getApplicationContext(), Edit_Category.class);
+                                String nombres = (String) listaCat.getItemAtPosition(i);
+                                intent.putExtra("nombre", nombres);
+                                startActivity(intent);
+                            }
+                        });
 
                         Log.i("id_categoria", String.valueOf(obj_categorias.getId_categoria()));
                         Log.i("nombre_categoria", String.valueOf(obj_categorias.getId_categoria()));
