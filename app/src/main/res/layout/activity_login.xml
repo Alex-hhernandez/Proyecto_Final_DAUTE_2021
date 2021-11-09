@@ -65,6 +65,19 @@
         android:background="@drawable/custom_input"
         />
 
+    <TextView
+        android:id="@+id/rec_pass"
+        android:layout_marginTop="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Olvide mi Contrasena"
+        android:textSize="15sp"
+        android:textColor="#00FF0A"
+        android:textStyle="bold"
+        android:layout_below="@id/et_password"
+        android:gravity="center_horizontal"
+        />
+
     <Button
         android:id="@+id/btn_getstarted"
         android:layout_width="wrap_content"

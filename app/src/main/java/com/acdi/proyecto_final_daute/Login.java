@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
 
     private Window window;
     private EditText et_email, et_pass;
+    private TextView back;
     private Button btnLogin;
     DatabaseReference databaseReference1;
 
@@ -39,12 +40,21 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        back = findViewById(R.id.rec_pass);
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_getstarted);
         databaseReference1 = FirebaseDatabase.getInstance().getReference(getString(R.string.Usuario));
 
         this.window = getWindow();
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pass = new Intent(getApplicationContext(), password.class);
+                startActivity(pass);
+            }
+        });
 
         //IniciarSeccion();
 
