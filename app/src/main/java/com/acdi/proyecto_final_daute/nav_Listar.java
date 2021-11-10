@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,12 +17,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class nav_Listar extends Fragment {
 
@@ -31,6 +37,7 @@ public class nav_Listar extends Fragment {
     private Button btnNuevo, btnGuardar,btnVer;
 
     DatabaseReference databaseReference;
+    FirebaseAuth auth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,7 +69,7 @@ public class nav_Listar extends Fragment {
         sp_tipo.setAdapter(adaptertipo);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
+        auth = FirebaseAuth.getInstance();
 
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +104,10 @@ public class nav_Listar extends Fragment {
                 }else if(clave.length() == 0){
                     et_clave.setError("Campo obligatorio");
 
-                }else if(sp_tipo.getSelectedItemPosition() == 0){
+                }else if(clave.length() < 6){
+                    et_clave.setError("Debe tener al menos 6 caracteres");
+
+                } else if(sp_tipo.getSelectedItemPosition() == 0){
                     Toast.makeText(getContext(), "Debe selecionar el tipo", Toast.LENGTH_SHORT).show();
 
                 }else if(sp_estado.getSelectedItemPosition() == 0){
@@ -124,7 +134,6 @@ public class nav_Listar extends Fragment {
                     }
 
                     saveUser(id, nombre, apellidos, correo, usuario, clave, tipo, estado, pregunta, respuesta);
-                    Toast.makeText(getContext(), "¡Registro guardado!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -141,18 +150,46 @@ public class nav_Listar extends Fragment {
     }
 
     private void saveUser(String id, String nombre, String apellidos, String correo, String usuario, String clave, String tipo, String estado, String pregunta, String respuesta) {
-        Map<String, Object> datosUser = new HashMap<>();
-        datosUser.put("id", id);
-        datosUser.put("nombre", nombre);
-        datosUser.put("apellidos", apellidos);
-        datosUser.put("correo", correo);
-        datosUser.put("usuario", usuario);
-        datosUser.put("clave", clave);
-        datosUser.put("tipo", tipo);
-        datosUser.put("estado", estado);
-        datosUser.put("pregunta", pregunta);
-        datosUser.put("respuesta", respuesta);
 
-        databaseReference.child("Usuario").push().setValue(datosUser);
+       auth.createUserWithEmailAndPassword(correo,clave).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if(task.isSuccessful()){
+
+                    Map<String, Object> datosUser = new HashMap<>();
+                    datosUser.put("id", id);
+                    datosUser.put("nombre", nombre);
+                    datosUser.put("apellidos", apellidos);
+                    datosUser.put("correo", correo);
+                    datosUser.put("usuario", usuario);
+                    datosUser.put("clave", clave);
+                    datosUser.put("tipo", tipo);
+                    datosUser.put("estado", estado);
+                    datosUser.put("pregunta", pregunta);
+                    datosUser.put("respuesta", respuesta);
+
+                    String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
+
+                    databaseReference.child("Usuario").child(id).setValue(datosUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task1) {
+
+                            if(task1.isSuccessful()){
+
+                                Toast.makeText(getContext(), "Registro guardado con exito!", Toast.LENGTH_SHORT).show();
+                            }else{
+
+                                Toast.makeText(getContext(), "No se pudo guardar", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                }else{
+                    Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+       });
+
     }
 }
