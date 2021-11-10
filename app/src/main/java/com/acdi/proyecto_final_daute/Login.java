@@ -20,6 +20,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +38,7 @@ public class Login extends AppCompatActivity {
     private TextView back;
     private Button btnLogin;
     DatabaseReference databaseReference1;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class Login extends AppCompatActivity {
         et_pass = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_getstarted);
         databaseReference1 = FirebaseDatabase.getInstance().getReference(getString(R.string.Usuario));
+        auth = FirebaseAuth.getInstance();
 
         this.window = getWindow();
 
@@ -130,34 +136,15 @@ public class Login extends AppCompatActivity {
 
     private void login(final Context context, final String email, final String pass){
 
-        Query query = databaseReference1.orderByChild("correo").equalTo(email);
-
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(snapshot.exists()){
-                    for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-
-                        DtoUser user = dataSnapshot.getValue(DtoUser.class);
-
-                        String clave = user.getClave();
-
-                        if (pass.equals(clave)){
-                            welcome();
-                        }else{
-                            Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                if(task.isSuccessful()){
+                    welcome();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
             }
         });
     }
