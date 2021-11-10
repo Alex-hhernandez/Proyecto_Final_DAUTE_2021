@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class Edit_Product extends AppCompatActivity {
     private EditText et_id, et_nombre, et_descri, et_stock, et_precio, et_unidad;
     private Spinner sp_estado, sp_categoria;
     private TextView tv_fecha;
+    private Button btnUpdate;
 
     ArrayList<String> lista = null;
     ArrayList<dto_categorias> listaCategorias;
@@ -52,6 +54,7 @@ public class Edit_Product extends AppCompatActivity {
         sp_estado = findViewById(R.id.spinner);
         sp_categoria = findViewById(R.id.spinner2);
         tv_fecha = findViewById(R.id.textView10);
+        btnUpdate = findViewById(R.id.btn_save);
 
         String nombre = getIntent().getStringExtra("nombre");
         Toast.makeText(getApplicationContext(), ""+nombre, Toast.LENGTH_SHORT).show();
@@ -87,6 +90,55 @@ public class Edit_Product extends AppCompatActivity {
         });
 
         traerDatosProd(getApplicationContext(), nombre);
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String id = et_id.getText().toString();
+                String nombre = et_nombre.getText().toString();
+                String descripcion = et_descri.getText().toString();
+                String stock = et_stock.getText().toString();
+                String precio = et_precio.getText().toString();
+                String unidad = et_unidad.getText().toString();
+                String estado = "";
+
+                if(id.length() == 0){
+                    et_id.setError("Campo Obligatorio");
+
+                }else if(nombre.length() == 0){
+                    et_nombre.setError("Campo Obligatorio");
+
+                }else if(descripcion.length() == 0){
+                    et_descri.setError("Campo Obligatorio");
+
+                }else if(stock.length() == 0){
+                    et_stock.setError("Campo Obligatorio");
+
+                }else if(precio.length() == 0){
+                    et_precio.setError("Campo Obligatorio");
+
+                }else if(unidad.length() == 0){
+                    et_unidad.setError("Campo Obligatorio");
+
+                }else if(sp_estado.getSelectedItemPosition() == 0){
+                    Toast.makeText(getApplicationContext(), "Debe selecionar el estado eel producto", Toast.LENGTH_SHORT).show();
+
+                }else if(sp_categoria.getSelectedItemPosition() > 0){
+
+                    if (sp_estado.getSelectedItem().toString().equals("Activo")){
+                        estado = "1";
+                    }else{
+                        estado = "0";
+                    }
+
+                    updateProduct(getApplicationContext(), id, nombre, descripcion, stock, precio, unidad, estado, id_categoria);
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "Debe selecionar la categorpia", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void fk_categorias(final Context context){
@@ -204,6 +256,61 @@ public class Edit_Product extends AppCompatActivity {
             protected HashMap<String,String> getParams(){
                 HashMap<String,String> parametros = new HashMap<>();
                 parametros.put("nombre", nombre);
+
+                return parametros;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+
+    private void updateProduct(final Context context, final String id, final String nombre, final String descripcion, final String stock, final String precio, final String unidad, final String estado, final String categoria){
+
+        String url = "http://acdi.freeoda.com/web_service/editar_producto.php ";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                JSONObject requestJSON = null;
+
+                try {
+
+                    requestJSON = new JSONObject(response.toString());
+                    String estado = requestJSON.getString("estado");
+                    String mensaje = requestJSON.getString("mensaje");
+
+                    if(estado.equals("1")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }else if (estado.equals("2")){
+                        Toast.makeText(context, "" + mensaje, Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    e.getMessage();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error, Revise su conexión", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected HashMap<String,String> getParams(){
+
+                HashMap<String,String> parametros = new HashMap<>();
+                parametros.put("id", id);
+                parametros.put("nombre", nombre);
+                parametros.put("descripcion", descripcion);
+                parametros.put("stock", stock);
+                parametros.put("precio", precio);
+                parametros.put("unidad", unidad);
+                parametros.put("estado", estado);
+                parametros.put("categoria", categoria);
 
                 return parametros;
             }
