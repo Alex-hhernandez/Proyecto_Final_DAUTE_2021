@@ -109,19 +109,7 @@ public class List_User extends AppCompatActivity {
                                         intent.putExtras(intent);
 
                                         startActivity(intent);
-                                        //finish();
 
-                                        /*Log.i("id", ""+id);
-                                        Log.e("nombre", ""+nombre);
-                                        Log.e("apellidos", ""+apellidos);
-                                        Log.e("correo", ""+correo);
-                                        Log.e("usuario", ""+usuario);
-                                        Log.e("clave", ""+clave);
-                                        Log.e("tipo", ""+tipo);
-                                        Log.e("estado", ""+estado);
-                                        Log.e("pregunta", ""+pregunta);
-                                        Log.e("respuesta", ""+respuesta);
-                                        Log.i("Datos: ", ""+snapshot.getValue());*/
                                     }
 
                                 }
