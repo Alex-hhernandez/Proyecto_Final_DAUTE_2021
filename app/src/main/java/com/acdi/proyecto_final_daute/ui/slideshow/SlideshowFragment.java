@@ -69,7 +69,7 @@ public class SlideshowFragment extends Fragment {
         sp_categoria = view.findViewById(R.id.spinner2);
         btnVer = view.findViewById(R.id.btn_Ver);
         btnSave = view.findViewById(R.id.button);
-        btnSave = view.findViewById(R.id.button2);
+        btnNew = view.findViewById(R.id.button2);
 
         ArrayAdapter<CharSequence> adapterEstado = ArrayAdapter.createFromResource(getContext(), R.array.estadoUser, android.R.layout.simple_spinner_item);
         adapterEstado.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -98,6 +98,13 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        btnNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newProduct();
             }
         });
 
