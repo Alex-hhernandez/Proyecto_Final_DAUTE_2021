@@ -203,6 +203,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:drawableLeft="@drawable/create"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese la unidad de medida"
                 android:inputType="number"
