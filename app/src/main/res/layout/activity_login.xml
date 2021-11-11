@@ -47,23 +47,22 @@
         android:textStyle="bold" />
 
     <EditText
-        android:drawableLeft="@drawable/custom_lock"
-        android:drawablePadding="15sp"
-        android:paddingHorizontal="12sp"
-        android:paddingVertical="12sp"
         android:id="@+id/et_password"
-        android:layout_marginTop="20sp"
-        android:layout_below="@id/et_email"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/et_email"
         android:layout_centerHorizontal="true"
-        android:hint="******"
-        android:textColorHint="#B1A8A8"
-        android:inputType="textPassword"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:layout_marginTop="20sp"
         android:background="@drawable/custom_input"
-        />
+        android:drawableLeft="@drawable/custom_lock"
+        android:drawablePadding="15sp"
+        android:hint="******"
+        android:inputType="textPassword"
+        android:paddingHorizontal="12sp"
+        android:paddingVertical="12sp"
+        android:textColor="@color/white"
+        android:textColorHint="#B1A8A8"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/rec_pass"
