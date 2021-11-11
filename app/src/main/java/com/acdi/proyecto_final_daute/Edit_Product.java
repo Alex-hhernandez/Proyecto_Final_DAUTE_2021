@@ -182,7 +182,7 @@ public class Edit_Product extends AppCompatActivity {
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, lista);
                         sp_categoria.setAdapter(adapter);
 
-                        
+
                     }
 
                 } catch (JSONException e) {
@@ -244,7 +244,6 @@ public class Edit_Product extends AppCompatActivity {
                             sp_estado.setSelection(2);
                         }
 
-                        //sp_categoria.setSelection(Integer.parseInt(String.valueOf(estado.equals(id_categoria))));
                     }
 
                 }catch (JSONException e){
