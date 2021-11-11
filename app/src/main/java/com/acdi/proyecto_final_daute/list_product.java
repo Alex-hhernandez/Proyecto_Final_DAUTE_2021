@@ -87,9 +87,6 @@ public class list_product extends AppCompatActivity {
                             }
                         });
 
-                        Log.i("id_producto", String.valueOf(obj_productos.getId_producto()));
-                        Log.i("nombre_producto", String.valueOf(obj_productos.getId_producto()));
-                        Log.i("estado_producto", String.valueOf(obj_productos.getId_producto()));
 
                     }
 
