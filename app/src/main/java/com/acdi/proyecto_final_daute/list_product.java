@@ -83,6 +83,7 @@ public class list_product extends AppCompatActivity {
                                 String nombres = (String) ListaProduct.getItemAtPosition(i);
                                 intent.putExtra("nombre", nombres);
                                 startActivity(intent);
+                                finish();
                             }
                         });
 

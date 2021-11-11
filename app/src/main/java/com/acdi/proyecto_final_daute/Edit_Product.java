@@ -31,7 +31,7 @@ public class Edit_Product extends AppCompatActivity {
     private EditText et_id, et_nombre, et_descri, et_stock, et_precio, et_unidad;
     private Spinner sp_estado, sp_categoria;
     private TextView tv_fecha;
-    private Button btnUpdate;
+    private Button btnUpdate, btnDelete;
 
     ArrayList<String> lista = null;
     ArrayList<dto_categorias> listaCategorias;
@@ -55,6 +55,7 @@ public class Edit_Product extends AppCompatActivity {
         sp_categoria = findViewById(R.id.spinner2);
         tv_fecha = findViewById(R.id.textView10);
         btnUpdate = findViewById(R.id.btn_save);
+        btnDelete = findViewById(R.id.btn_delete);
 
         String nombre = getIntent().getStringExtra("nombre");
         Toast.makeText(getApplicationContext(), ""+nombre, Toast.LENGTH_SHORT).show();
@@ -90,6 +91,15 @@ public class Edit_Product extends AppCompatActivity {
         });
 
         traerDatosProd(getApplicationContext(), nombre);
+
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = et_id.getText().toString();
+                deleteProduct(getApplicationContext(), id);
+            }
+        });
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -311,6 +321,55 @@ public class Edit_Product extends AppCompatActivity {
                 parametros.put("unidad", unidad);
                 parametros.put("estado", estado);
                 parametros.put("categoria", categoria);
+
+                return parametros;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+
+
+    private void deleteProduct(final Context context, final String id){
+
+        String url = "http://acdi.freeoda.com/web_service/eliminar_producto.php";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                JSONObject requestJSON = null;
+
+                try {
+
+                    requestJSON = new JSONObject(response.toString());
+                    String estado = requestJSON.getString("estado");
+                    String mensaje = requestJSON.getString("mensaje");
+
+                    if(estado.equals("1")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }else if (estado.equals("2")){
+                        Toast.makeText(context, "" + mensaje, Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    e.getMessage();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected HashMap<String,String> getParams(){
+
+                HashMap<String,String> parametros = new HashMap<>();
+                parametros.put("id", id);
 
                 return parametros;
             }
