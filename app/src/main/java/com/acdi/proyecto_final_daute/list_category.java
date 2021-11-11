@@ -82,10 +82,6 @@ public class list_category extends AppCompatActivity {
                             }
                         });
 
-                        Log.i("id_categoria", String.valueOf(obj_categorias.getId_categoria()));
-                        Log.i("nombre_categoria", String.valueOf(obj_categorias.getId_categoria()));
-                        Log.i("estado_categoria", String.valueOf(obj_categorias.getId_categoria()));
-
                     }
 
                 } catch (JSONException e) {
