@@ -175,6 +175,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:drawableLeft="@drawable/dollar"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese el precio"
                 android:inputType="textEmailAddress"
