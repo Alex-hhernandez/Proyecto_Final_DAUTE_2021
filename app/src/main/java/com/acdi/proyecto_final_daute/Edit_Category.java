@@ -58,6 +58,23 @@ public class Edit_Category extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), ""+nombre, Toast.LENGTH_SHORT).show();
 
         traerDatosCat(getApplicationContext(), nombre);
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = et_id.getText().toString();
+                String nombre = et_nombre.getText().toString();
+                String estado = "";
+
+                if (sp_estado.getSelectedItem().toString().equals("Activo")){
+                    estado = "1";
+                }else{
+                    estado = "0";
+                }
+
+                updateCategory(getApplicationContext(), id, nombre, estado);
+            }
+        });
     }
 
     private void traerDatosCat(final Context context, final String nombre){
@@ -154,6 +171,57 @@ public class Edit_Category extends AppCompatActivity {
 
                 HashMap<String,String> parametros = new HashMap<>();
                 parametros.put("id", id);
+
+                return parametros;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+
+
+    private void updateCategory(final Context context, final String id, final String nombre, final String estado){
+
+        String url = "http://acdi.freeoda.com/web_service/editar_categoria.php ";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                JSONObject requestJSON = null;
+
+                try {
+
+                    requestJSON = new JSONObject(response.toString());
+                    String estado = requestJSON.getString("estado");
+                    String mensaje = requestJSON.getString("mensaje");
+
+                    if(estado.equals("1")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }else if (estado.equals("2")){
+                        Toast.makeText(context, "" + mensaje, Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    e.getMessage();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error, Revise su conexión", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected HashMap<String,String> getParams(){
+
+                HashMap<String,String> parametros = new HashMap<>();
+                parametros.put("id", id);
+                parametros.put("nombre", nombre);
+                parametros.put("estado", estado);
 
                 return parametros;
             }

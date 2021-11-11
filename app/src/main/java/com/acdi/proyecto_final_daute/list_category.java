@@ -78,6 +78,7 @@ public class list_category extends AppCompatActivity {
                                 String nombres = (String) listaCat.getItemAtPosition(i);
                                 intent.putExtra("nombre", nombres);
                                 startActivity(intent);
+                                finish();
                             }
                         });
 
