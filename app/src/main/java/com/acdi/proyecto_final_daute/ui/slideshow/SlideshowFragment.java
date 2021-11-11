@@ -215,6 +215,17 @@ public class SlideshowFragment extends Fragment {
         MySingleton.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+    private void newProduct(){
+        et_id.setText(null);
+        et_nombre.setText(null);
+        et_descri.setText(null);
+        et_stock.setText(null);
+        et_precio.setText(null);
+        et_unidad.setText(null);
+        sp_estado.setSelection(0);
+        sp_categoria.setSelection(0);
+    }
+
     private void save_productos(final Context context, final int id_prod, final String nom_prod, final String des_prod, final String stock, final String precio, final String uni_medida, final String estado_prod, final String categoria){
 
         String url = "http://acdi.freeoda.com/web_service/guardar_productos.php";
