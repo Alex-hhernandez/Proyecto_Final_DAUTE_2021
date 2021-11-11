@@ -198,7 +198,7 @@ public class SlideshowFragment extends Fragment {
 
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, lista);
                         sp_categoria.setAdapter(adapter);
-                        
+
 
                     }
 
