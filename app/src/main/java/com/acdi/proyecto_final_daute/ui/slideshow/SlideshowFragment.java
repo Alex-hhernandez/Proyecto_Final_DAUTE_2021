@@ -198,10 +198,7 @@ public class SlideshowFragment extends Fragment {
 
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, lista);
                         sp_categoria.setAdapter(adapter);
-
-                        Log.i("id_categoria", String.valueOf(obj_categorias.getId_categoria()));
-                        Log.i("nombre_categoria", String.valueOf(obj_categorias.getId_categoria()));
-                        Log.i("estado_categoria", String.valueOf(obj_categorias.getId_categoria()));
+                        
 
                     }
 
