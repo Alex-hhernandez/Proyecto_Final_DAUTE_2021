@@ -14,17 +14,17 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.acdi.proyecto_final_daute.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="Category"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.acdi.proyecto_final_daute.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="Products"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/nav_Listar"
         android:name="com.acdi.proyecto_final_daute.nav_Listar"
-        android:label="fragment_nav__listar"
+        android:label="Users"
         tools:layout="@layout/fragment_nav__listar" />
 </navigation>
