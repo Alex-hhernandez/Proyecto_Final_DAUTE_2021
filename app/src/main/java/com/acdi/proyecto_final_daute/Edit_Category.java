@@ -1,8 +1,10 @@
 package com.acdi.proyecto_final_daute;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -43,9 +45,25 @@ public class Edit_Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String id = et_id.getText().toString();
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Edit_Category.this);
+                alerta.setIcon(android.R.drawable.ic_dialog_alert);
+                alerta.setTitle("¿Eliminar categoría?");
+                alerta.setMessage("Los datos se eliminaran permanentemente");
+                alerta.setCancelable(false);
+                alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String id = et_id.getText().toString();
 
-                deleteCategory(getApplicationContext(), id);
+                        deleteCategory(getApplicationContext(), id);
+                    }
+                });
+                alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).show();
             }
         });
 

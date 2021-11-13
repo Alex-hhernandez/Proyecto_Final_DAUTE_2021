@@ -1,8 +1,10 @@
 package com.acdi.proyecto_final_daute;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -185,9 +187,27 @@ public class Edit_User extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String id = et_id.getText().toString();
 
-                deleteUser(id);
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Edit_User.this);
+                alerta.setIcon(android.R.drawable.ic_dialog_alert);
+                alerta.setTitle("¿Eliminar usuario?");
+                alerta.setMessage("Los datos se eliminaran permanentemente");
+                alerta.setCancelable(false);
+                alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String id = et_id.getText().toString();
+
+                        deleteUser(id);
+                    }
+                });
+                alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).show();
+
             }
         });
     }
