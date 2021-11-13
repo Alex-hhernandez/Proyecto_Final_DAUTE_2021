@@ -96,16 +96,16 @@
         />
 
     <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"
-        android:layout_below="@id/et_namecat"
         android:id="@+id/textview_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/et_namecat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp"
         android:text="Estado de la categoria"
         android:textColor="@color/white"
         android:textSize="20sp"
-        />
+        android:textStyle="bold"/>
 
     <Spinner
         android:id="@+id/spinner_cat"
@@ -118,11 +118,12 @@
         />
 
     <LinearLayout
-        android:layout_marginTop="18sp"
-        android:layout_below="@id/spinner_cat"
         android:id="@+id/cat_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/spinner_cat"
+        android:layout_marginHorizontal="22sp"
+        android:layout_marginTop="18sp"
         android:orientation="horizontal">
 
         <Button
@@ -130,20 +131,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#F813FB1D"
+            android:paddingVertical="14sp"
             android:text="Guardar"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="20sp"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn_newCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:paddingVertical="16sp"
             android:text="nueva Categoria"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            />
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -156,8 +165,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10sp"
         android:layout_weight="1"
+        android:backgroundTint="#4B4E4E"
+        android:paddingHorizontal="52sp"
+        android:paddingVertical="14sp"
         android:text="Ver Categorias"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:cornerRadius="12sp" />
 
 </RelativeLayout>
