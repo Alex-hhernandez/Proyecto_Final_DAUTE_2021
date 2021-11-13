@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +31,7 @@ public class Edit_Category extends AppCompatActivity {
     private EditText et_id, et_nombre;
     private Spinner sp_estado;
     private Button btnDelete, btnUpdate;
+    private Window window;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,11 @@ public class Edit_Category extends AppCompatActivity {
         sp_estado = findViewById(R.id.spinner_cat);
         btnDelete = findViewById(R.id.btn_delete);
         btnUpdate = findViewById(R.id.btn_save);
+
+        this.window = getWindow();
+
+        cambiarcolor();
+
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -250,5 +258,12 @@ public class Edit_Category extends AppCompatActivity {
 
     public void back_listUser(View view) {
         finish();
+    }
+
+    private void cambiarcolor(){
+        String color = "#FF000000";
+
+        window.setStatusBarColor(Color.parseColor(color));
+
     }
 }
