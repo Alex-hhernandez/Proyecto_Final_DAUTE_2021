@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrado Exitosamente"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20sp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_marginTop="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="180sp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/delete"
+        app:lottie_loop="true"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:id="@+id/btn_okDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:backgroundTint="#007A09"
+        android:layout_marginTop="10sp"
+        />
+
+
+</LinearLayout>
