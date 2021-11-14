@@ -21,9 +21,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +41,7 @@ public class nav_Listar extends Fragment {
     private Button btnNuevo, btnGuardar,btnVer;
 
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference1;
     FirebaseAuth auth;
 
     @Override
@@ -69,8 +74,10 @@ public class nav_Listar extends Fragment {
         sp_tipo.setAdapter(adaptertipo);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference1 = FirebaseDatabase.getInstance().getReference(getString(R.string.Usuario));
         auth = FirebaseAuth.getInstance();
 
+        verifi(MainActivity.correo);
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,5 +198,43 @@ public class nav_Listar extends Fragment {
             }
        });
 
+    }
+
+    private void verifi(String correo){
+
+        Query query = databaseReference1.orderByChild("correo").equalTo(correo);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+
+                    DtoUser user = snapshot.getValue(DtoUser.class);
+                    String id = user.getId();
+                    String nombre = user.getNombre();
+                    String apellidos = user.getApellidos();
+                    String correo = user.getCorreo();
+                    String usuario = user.getUsuario();
+                    String clave = user.getClave();
+                    String tipo = user.getTipo();
+                    String estado = user.getEstado();
+                    String pregunta = user.getPregunta();
+                    String respuesta = user.getRespuesta();
+
+                    if(tipo.equals("0")){
+                        btnGuardar.setEnabled(false);
+                        btnNuevo.setEnabled(false);
+                        btnVer.setEnabled(false);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

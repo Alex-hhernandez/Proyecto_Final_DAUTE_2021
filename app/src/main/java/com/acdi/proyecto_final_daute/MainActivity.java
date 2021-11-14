@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Window window;
     FirebaseUser user;
-    String correo = "";
+    public static String correo = "";
     DatabaseReference databaseReference1;
 
     @Override
