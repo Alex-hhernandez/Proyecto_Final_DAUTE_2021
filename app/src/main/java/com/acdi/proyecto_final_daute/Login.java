@@ -125,6 +125,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void run() {
                 Intent home = new Intent(getApplicationContext(), MainActivity.class);
+                String correo = et_email.getText().toString();
+                home.putExtra("correo", correo);
                 startActivity(home);
                 dialog.dismiss();
                 finish();
