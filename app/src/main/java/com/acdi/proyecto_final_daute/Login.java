@@ -143,7 +143,34 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
-                    welcome();
+
+                    Query query = databaseReference1.orderByChild("correo").equalTo(email);
+
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+
+                                DtoUser user = snapshot.getValue(DtoUser.class);
+
+                                String estado = user.getEstado();
+
+                                if(estado.equals("0")){
+                                    Toast.makeText(getApplicationContext(), "Este usuario no está activo", Toast.LENGTH_SHORT).show();
+
+                                }else{
+                                    welcome();
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }else{
                     Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 }
