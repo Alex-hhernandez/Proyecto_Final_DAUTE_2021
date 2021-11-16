@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="50sp"
         android:text="LOGIN"
         android:textColor="@color/white"
         android:textSize="40sp"
@@ -66,16 +66,15 @@
 
     <TextView
         android:id="@+id/rec_pass"
-        android:layout_marginTop="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Olvide mi Contrasena"
-        android:textSize="15sp"
-        android:textColor="#00FF0A"
-        android:textStyle="bold"
         android:layout_below="@id/et_password"
+        android:layout_marginTop="24sp"
         android:gravity="center_horizontal"
-        />
+        android:text="Olvide mi Contraseña"
+        android:textColor="#00FF0A"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_getstarted"
