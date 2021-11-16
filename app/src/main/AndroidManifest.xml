@@ -24,7 +24,8 @@
             />
         <activity
             android:name=".Edit_Product"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.DAUTE_NoActionBar"/>
         <activity
             android:name=".Edit_User"
             android:exported="false" />

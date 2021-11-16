@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +36,7 @@ public class Edit_Product extends AppCompatActivity {
     private Spinner sp_estado, sp_categoria;
     private TextView tv_fecha;
     private Button btnUpdate, btnDelete;
+    private Window window;
 
     ArrayList<String> lista = null;
     ArrayList<dto_categorias> listaCategorias;
@@ -58,6 +61,10 @@ public class Edit_Product extends AppCompatActivity {
         tv_fecha = findViewById(R.id.textView10);
         btnUpdate = findViewById(R.id.btn_save);
         btnDelete = findViewById(R.id.btn_delete);
+
+        this.window = getWindow();
+
+        cambiarcolor();
 
         String nombre = getIntent().getStringExtra("nombre");
         Toast.makeText(getApplicationContext(), ""+nombre, Toast.LENGTH_SHORT).show();
@@ -396,5 +403,12 @@ public class Edit_Product extends AppCompatActivity {
 
     public void back_listUser(View view) {
         finish();
+    }
+
+    private void cambiarcolor(){
+        String color = "#FF000000";
+
+        window.setStatusBarColor(Color.parseColor(color));
+
     }
 }

@@ -21,11 +21,12 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:src="@drawable/back"
-                android:layout_marginTop="10sp"
-                android:layout_marginLeft="10sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginLeft="20sp"
                 />
 
             <LinearLayout
+                android:layout_below="@id/back_listUser"
                 android:layout_marginTop="20sp"
                 android:id="@+id/container_txtuser"
                 android:layout_width="match_parent"
@@ -33,6 +34,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/product"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="15sp"/>
 
                 <TextView
                     android:layout_gravity="center_vertical"
@@ -47,12 +54,12 @@
 
             <TextView
                 android:id="@+id/textView1"
-                android:layout_below="@id/container_txtuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/container_txtuser"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30sp"
-                android:text="id del producto"
+                android:text="Id del producto"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -97,6 +104,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:drawableLeft="@drawable/note"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese el nombre"
                 android:inputType="textPersonName"
@@ -126,6 +134,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:drawableLeft="@drawable/note"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese la descripcion"
                 android:inputType="textPersonName"
@@ -155,6 +164,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:drawableLeft="@drawable/store"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese la cantidad"
                 android:inputType="number"
@@ -184,6 +194,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:drawableLeft="@drawable/dollar"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese el precio"
                 android:inputType="textEmailAddress"
@@ -212,6 +223,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20sp"
                 android:background="@drawable/custom_user"
+                android:drawableLeft="@drawable/create"
                 android:drawablePadding="15sp"
                 android:hint="Ingrese la unidad de medida"
                 android:inputType="number"
@@ -268,10 +280,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView9"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="10sp"
+                android:fontFamily="sans-serif"
                 android:text="yyyy-MM-dd:mm:ss"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -281,6 +294,7 @@
                 android:layout_below="@id/textView10"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20sp"
+                android:layout_marginHorizontal="2sp"
                 android:gravity="center">
 
                 <Button
@@ -288,7 +302,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Guardar" />
+                    android:text="Guardar"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#238727"
+                    android:paddingVertical="12sp"
+                    app:cornerRadius="8sp"/>
+
+                <Space
+                    android:layout_width="15sp"
+                    android:layout_height="wrap_content"/>
 
                 <Button
                     android:id="@+id/btn_delete"
@@ -297,7 +321,12 @@
                     android:layout_below="@id/button"
                     android:backgroundTint="#FF0606"
                     android:layout_weight="1"
-                    android:text="Borrar" />
+                    android:text="Borrar"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:paddingVertical="12sp"
+                    app:cornerRadius="8sp"/>
             </LinearLayout>
 
 
