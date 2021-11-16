@@ -22,11 +22,12 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:src="@drawable/back"
-                android:layout_marginTop="10sp"
-                android:layout_marginLeft="10sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginLeft="20sp"
                 />
 
             <LinearLayout
+                android:layout_below="@id/back_listUser"
                 android:layout_marginTop="20sp"
                 android:id="@+id/container_txtuser"
                 android:layout_width="match_parent"
@@ -312,45 +313,30 @@
                 android:textColorHint="#B1A8A8"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/res_edit"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30sp"
-                android:text="Fecha de registro"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView9"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30sp"
-                android:text="yyyy-MM-dd:mm:ss"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/container_buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textView10"
-                android:layout_marginTop="30dp"
+                android:layout_below="@id/res_edit"
+                android:layout_marginTop="50dp"
                 android:layout_marginBottom="20sp"
+                android:orientation="vertical"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/btn_save"
-                    android:layout_width="wrap_content"
+                    android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Guardar" />
+                    android:text="Guardar"
+                    android:backgroundTint="#137C17"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:paddingVertical="12sp"
+                    app:cornerRadius="8sp"/>
 
                 <Button
                     android:id="@+id/btn_delete"
@@ -359,7 +345,8 @@
                     android:layout_below="@id/button"
                     android:backgroundTint="#FF0606"
                     android:layout_weight="1"
-                    android:text="Borrar" />
+                    android:text="Borrar"
+                    android:visibility="invisible"/>
             </LinearLayout>
 
         </RelativeLayout>

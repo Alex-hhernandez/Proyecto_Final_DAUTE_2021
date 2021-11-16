@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ public class Edit_User extends AppCompatActivity {
     private Spinner sp_estado, sp_tipo;
     private TextView tv_fecha;
     private Button btnEditar, btnBorrar;
+    private Window window;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference1;
 
@@ -49,6 +52,10 @@ public class Edit_User extends AppCompatActivity {
         tv_fecha = findViewById(R.id.textView10);
         btnBorrar = findViewById(R.id.btn_delete);
         btnEditar = findViewById(R.id.btn_save);
+
+        this.window = getWindow();
+
+        cambiarcolor();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference1 = FirebaseDatabase.getInstance().getReference(getString(R.string.Usuario));
@@ -277,5 +284,12 @@ public class Edit_User extends AppCompatActivity {
 
     public void back_listUser(View view) {
         finish();
+    }
+
+    private void cambiarcolor(){
+        String color = "#FF000000";
+
+        window.setStatusBarColor(Color.parseColor(color));
+
     }
 }
