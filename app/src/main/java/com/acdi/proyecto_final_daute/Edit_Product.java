@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -114,8 +115,9 @@ public class Edit_Product extends AppCompatActivity {
                 alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String id = et_id.getText().toString();
-                        deleteProduct(getApplicationContext(), id);
+                        //String id = et_id.getText().toString();
+                        //deleteProduct(getApplicationContext(), id);
+                        confirmDelete();
                     }
                 });
                 alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -403,6 +405,30 @@ public class Edit_Product extends AppCompatActivity {
 
     public void back_listUser(View view) {
         finish();
+    }
+
+    private void confirmDelete() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View vie = inflater.inflate(R.layout.dialog_confirm_delete, null);
+
+        builder.setView(vie);
+
+        final AlertDialog dialog = builder.create();
+        dialog.setCancelable(false);
+
+        Button btnok = vie.findViewById(R.id.btn_okDelete);
+        btnok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = et_id.getText().toString();
+                deleteProduct(getApplicationContext(), id);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     private void cambiarcolor(){
