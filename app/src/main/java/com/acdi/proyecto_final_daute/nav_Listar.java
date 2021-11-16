@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +80,22 @@ public class nav_Listar extends Fragment {
         auth = FirebaseAuth.getInstance();
 
         verifi(MainActivity.correo);
+        
+        btnNuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_id.setText("");
+                et_nombre.setText("");
+                et_apellido.setText("");
+                et_correo.setText("");
+                et_usuario.setText("");
+                et_clave.setText("");
+                et_pregunta.setText("");
+                et_respuesta.setText("");
+                sp_estado.setSelection(0);
+                sp_tipo.setSelection(0);
+            }
+        });
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +157,7 @@ public class nav_Listar extends Fragment {
                     }else{
                         estado = "0";
                     }
-
+                    check();
                     saveUser(id, nombre, apellidos, correo, usuario, clave, tipo, estado, pregunta, respuesta);
                 }
             }
@@ -236,5 +254,26 @@ public class nav_Listar extends Fragment {
                 Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void check() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View vie = inflater.inflate(R.layout.dialog_check, null);
+
+        builder.setView(vie);
+
+        final AlertDialog dialog = builder.create();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        },1800);
+
+        dialog.show();
     }
 }
