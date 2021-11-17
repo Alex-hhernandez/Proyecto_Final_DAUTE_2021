@@ -62,9 +62,8 @@ public class Edit_Category extends AppCompatActivity {
                 alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                      confirmDelete();
-
-
+                        String id = et_id.getText().toString();
+                        deleteCategory(getApplicationContext(), id);
                     }
                 });
                 alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -175,8 +174,9 @@ public class Edit_Category extends AppCompatActivity {
                     String mensaje = requestJSON.getString("mensaje");
 
                     if(estado.equals("1")){
+                        confirmDelete();
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-                        finish();
+                        //finish();
 
                     }else if (estado.equals("2")){
                         Toast.makeText(context, "" + mensaje, Toast.LENGTH_SHORT).show();
@@ -283,8 +283,7 @@ public class Edit_Category extends AppCompatActivity {
         btnok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = et_id.getText().toString();
-                deleteCategory(getApplicationContext(), id);
+                finish();
                 dialog.dismiss();
             }
         });

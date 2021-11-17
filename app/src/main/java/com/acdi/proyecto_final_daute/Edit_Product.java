@@ -115,9 +115,8 @@ public class Edit_Product extends AppCompatActivity {
                 alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //String id = et_id.getText().toString();
-                        //deleteProduct(getApplicationContext(), id);
-                        confirmDelete();
+                        String id = et_id.getText().toString();
+                        deleteProduct(getApplicationContext(), id);
                     }
                 });
                 alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -372,8 +371,9 @@ public class Edit_Product extends AppCompatActivity {
                     String mensaje = requestJSON.getString("mensaje");
 
                     if(estado.equals("1")){
+                        confirmDelete();
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-                        finish();
+                        ///finish();
 
                     }else if (estado.equals("2")){
                         Toast.makeText(context, "" + mensaje, Toast.LENGTH_SHORT).show();
@@ -423,8 +423,7 @@ public class Edit_Product extends AppCompatActivity {
         btnok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = et_id.getText().toString();
-                deleteProduct(getApplicationContext(), id);
+                finish();
                 dialog.dismiss();
             }
         });
