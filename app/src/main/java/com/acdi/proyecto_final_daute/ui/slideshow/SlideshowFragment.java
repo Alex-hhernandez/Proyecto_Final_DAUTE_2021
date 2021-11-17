@@ -160,7 +160,7 @@ public class SlideshowFragment extends Fragment {
                         estado = "0";
                     }
 
-                    check();
+                    //check();
 
                     save_productos(getContext(), Integer.parseInt(id), nombre, descripcion, stock, precio, unidad, estado, id_categoria);
 
@@ -250,6 +250,7 @@ public class SlideshowFragment extends Fragment {
                     String mensaje = requestJSON.getString("mensaje");
 
                     if(estado.equals("1")){
+                        check();
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
 
                     }else if(estado.equals("2")){

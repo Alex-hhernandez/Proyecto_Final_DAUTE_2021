@@ -81,7 +81,7 @@ public class GalleryFragment extends Fragment {
                     }else{
                         estado = "0";
                     }
-                    check();
+                    //check();
                     saveCategory(getContext(), Integer.parseInt(id), nombre, Integer.parseInt(estado));
 
                 }else{
@@ -130,6 +130,7 @@ public class GalleryFragment extends Fragment {
                     String mensaje = requestJSON.getString("mensaje");
 
                     if(estado.equals("1")){
+                        check();
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
 
                     }else if (estado.equals("2")){

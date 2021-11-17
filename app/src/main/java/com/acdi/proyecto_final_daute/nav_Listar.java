@@ -157,7 +157,7 @@ public class nav_Listar extends Fragment {
                     }else{
                         estado = "0";
                     }
-                    check();
+                    //check();
                     saveUser(id, nombre, apellidos, correo, usuario, clave, tipo, estado, pregunta, respuesta);
                 }
             }
@@ -201,7 +201,7 @@ public class nav_Listar extends Fragment {
                         public void onComplete(@NonNull Task<Void> task1) {
 
                             if(task1.isSuccessful()){
-
+                                check();
                                 Toast.makeText(getContext(), "Registro guardado con exito!", Toast.LENGTH_SHORT).show();
                             }else{
 
