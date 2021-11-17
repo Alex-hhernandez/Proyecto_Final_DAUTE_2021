@@ -254,7 +254,8 @@ public class SlideshowFragment extends Fragment {
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
 
                     }else if(estado.equals("2")){
-                        Toast.makeText(context, ""+mensaje, Toast.LENGTH_SHORT).show();
+                        check();
+                        Toast.makeText(context, "Registro guardado corectamente", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
